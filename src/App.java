@@ -38,7 +38,7 @@
  * Modify computeArea() so from task 3 so that:
  * 
  * 1. Negative values for length or height return a value of -1
- * 2. Too large values (greater than 1000) for length or height return a value of -1
+ * 2. Too large values (greater than 100) for length or height return a value of -1
  * 
  * STOP HERE FOR: 'A'
  ##############################################################################################
@@ -58,11 +58,25 @@ public class App {
      * You will MODIFY THIS ONE METHOD across tasks 1–4.
      * Do not create new methods.
      */
-    public static void computeArea() {
+    public static double computeArea(String shape, double length, double height) { //these are our 3 value which we need to put here in the method
+        if (length < 0 || height < 0 || length > 100|| height > 100) {//giving the parameters 
+            return -1;//gives it to main
+        }
 
+        double area = 0;//starting at zero
+        if (shape.equals("rect")) {//this is saying that if it is a rectangle then we do this 
+            area = length * height;//then we take the numbers that are given to us and use the formula
+        } else if (shape.equals("tri")) {//we use thhe fromula to find a triangle to find the area 
+            area = 0.5 * length * height;//same thing as line 69 exept differnet formula 
+        } else {//anything else we just return negaive one
+            return -1;
+        }
+
+        return area;//then we give main the area which is the value of our area as a int
     }
 
     public static void main(String[] args) {
+        // computeArea();
         //B- range
         // System.out.println("Task 1:");
         // computeArea(); // should PRINT 12.0
@@ -87,10 +101,10 @@ public class App {
 
 
         //A+ range
-        // System.out.println("Task 5:");
-        // System.out.println(computeArea("rect", 5, 3)); // 15.0
-        // System.out.println(computeArea("tri", 6, 4));  // 12.0
-        // System.out.println(computeArea("hex", 2, 2));  // -1.0 (unknown)
-        // System.out.println(computeArea("rect", -1, 9)); // -1.0 (invalid)
+        System.out.println("Task 5:");
+        System.out.println(computeArea("rect", 5, 3)); // 15.0
+        System.out.println(computeArea("tri", 6, 4));  // 12.0
+        System.out.println(computeArea("hex", 2, 2));  // -1.0 (unknown)
+        System.out.println(computeArea("rect", -1, 9)); // -1.0 (invalid)
     }
 }
